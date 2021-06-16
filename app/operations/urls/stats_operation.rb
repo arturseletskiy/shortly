@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Urls
   class StatsOperation < ApplicationOperation
     def execute(short_id:)

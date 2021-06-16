@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Urls
   class CreateOperation < ApplicationOperation
     def execute(full_url:)

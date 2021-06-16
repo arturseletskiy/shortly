@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'urls', type: :request do
@@ -23,9 +25,9 @@ RSpec.describe 'urls', type: :request do
       end
     end
 
-    context 'when any error' do 
+    context 'when any error' do
       it 'should return views statistics for short url' do
-        get "/urls/not_found"
+        get '/urls/not_found'
         expect(response.status).to eq(422)
       end
     end
@@ -42,9 +44,9 @@ RSpec.describe 'urls', type: :request do
       end
     end
 
-    context 'when any error' do 
+    context 'when any error' do
       it 'should return views statistics for short url' do
-        get "/urls/not_found/stats"
+        get '/urls/not_found/stats'
         expect(response.status).to eq(422)
       end
     end

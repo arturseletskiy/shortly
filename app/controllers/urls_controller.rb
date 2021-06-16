@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UrlsController < ApplicationController
   def create
     Urls::CreateOperation.call(full_url: request.raw_post) do |result|
