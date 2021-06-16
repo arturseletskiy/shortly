@@ -1,24 +1,36 @@
-# README
+# Задание 
+ 
+Реализовать сервис сокращения ссылок.  
+Данный сервис должен реализовывать 3 запроса: 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+POST /urls который возвращает короткий url 
+GET /urls/:short_url который возвращает длинный URL и увеличивает счетчик запросов на 1 
+GET /urls/:short_url/stats который возвращает количество переходов по URL 
 
-Things you may want to cover:
+Проект необходимо реализовать на Ruby On Rails. 
+База - на выбор. 
 
-* Ruby version
+# Комментарии к реализации
 
-* System dependencies
+- В ТЗ не указан формат выдачи. делаю plain text;
+- Так как не предъявлены требования к нагрузке, решил не делать доп. колонку с short_url (возможно, без преобразования из base62 работало бы быстрее), а завязаться на primary key таблицы;
+- Была мысль сделать уникальный индекс по full_url, чтобы не плодить данные, но в условиях об этом не было сказано + статистику с разных источников было бы уже не собрать;
+- Хотел было сделать отдельные операции для кодирования/декодирования в base62, но как-то из-за одной строки кода выносить кажется бесполезным
 
-* Configuration
+# Установка
 
-* Database creation
+## Зависимости 
+  - postgresql >= 12
+  - ruby >= 2.7.1
+  - скорее всего работает на более ранних версиях - не проверял
 
-* Database initialization
+## Установка
+```
+bundle install
+rails db:create 
+rails db:migrate
+bundle exec rails s
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Использование
+Примеры использования можно подсмотреть тут - spec/requests/urls_request_spec.rb 
