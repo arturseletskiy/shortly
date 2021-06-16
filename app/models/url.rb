@@ -4,10 +4,6 @@ require 'uri'
 
 class Url < ApplicationRecord
   class << self
-    def find_by_short_id!(short_id)
-      Url.find(from_short_id(short_id))
-    end
-
     def from_short_id(value)
       Base64.urlsafe_decode64(value)
     rescue ArgumentError => e
